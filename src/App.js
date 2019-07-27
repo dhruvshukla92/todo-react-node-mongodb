@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import "./App.css";
+import TodoList from "./components/TodoList";
+import CreateTodo from "./components/CreateTodo";
+import EditTodo from "./components/EditTodo";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <div className="container">
+        
+        <div
+          className="row"
+          style={{
+            backgroundColor: "#c6e8f5",
+           
+            borderRadius: "12px",
+            padding:"5px"
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <div className="col" style={{textAlign:"center"}}>
+          <h2 style={{ textAlign: "center",color:"" }}>To Do App</h2>
+          </div>
+          <div className="col" style={{textAlign:"center"}}>
+            <Link to="/">ToDos </Link>
+          </div>
+          <div className="col" style={{textAlign:"center"}}>
+            <Link to="/create">Create ToDo </Link>
+          </div>
+          <div className="col" style={{textAlign:"center"}}>
+            <Link to="/edit:id">Edit ToDo </Link>
+          </div>
+        </div>
+        <Route path="/" exact component={TodoList} />
+        <Route path="/create" component={CreateTodo} />
+        <Route path="/edit" component={EditTodo} />
+      </div>
+    </Router>
   );
 }
 
