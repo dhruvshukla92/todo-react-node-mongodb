@@ -50,6 +50,7 @@ todoRoutes.route('/add').post(function(req,res){
 })
 
 todoRoutes.route('/update/:id').post(function(req,res){
+    console.log(req.params.id);
     Todo.findById(req.params.id,function(err,todo){
         if (!todo) {
             res.status(404).send('data is not found')
