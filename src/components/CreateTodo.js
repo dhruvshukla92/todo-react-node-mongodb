@@ -98,7 +98,7 @@ componentDidUpdate(prevProps, prevState) {
      
         <form>
           <div className="form-group">
-            <lable>To do Description</lable>
+            <label>To do Description</label>
             <input
               type="text"
               className="form-control"
@@ -108,7 +108,7 @@ componentDidUpdate(prevProps, prevState) {
             />
           </div>
           <div className="form-group">
-            <lable>Responsible</lable>
+            <label>Responsible</label>
             <input
               type="text"
               className="form-control"
