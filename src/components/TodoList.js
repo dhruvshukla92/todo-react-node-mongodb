@@ -75,7 +75,9 @@ export default class TodoList extends Component {
     }
   };
   handleDataUpadate = e => {
+    console.log("handle data clicked");
     const { name, value } = e.target;
+    console.log(name+" : "+value);
     this.setState({
       upadatedTodo: {
         ...this.state.upadatedTodo,
@@ -93,9 +95,9 @@ export default class TodoList extends Component {
   handleDelete = (id, e) => {
     this.deleteTodo(id);
   };
-  closeNotification=()=>{
-    this.setState({doneAlert:false})
-  }
+  closeNotification = () => {
+    this.setState({ doneAlert: false });
+  };
   componentDidMount = () => {
     setTimeout(() => {
       this.getTodos();
@@ -158,11 +160,11 @@ export default class TodoList extends Component {
             </div>
           )}
           {this.state.doneAlert && (
-            <div class="alert alert-success alert-dismissible fade show">
+            <div className="alert alert-success alert-dismissible fade show">
               <button
                 type="button"
                 onClick={this.closeNotification}
-                class="close"
+                className="close"
               >
                 &times;
               </button>
@@ -229,10 +231,11 @@ const Todo = props => {
 
 const TodoEditable = props => {
   return (
-    <tr>
+    <tr style={{ backgroundColor: "#c6e8f5" }}>
       <td>
         <input
           type="text"
+          className="form-control"
           name="todo_description"
           value={props.todo.todo_description}
           onChange={props.handleDataUpadate}
@@ -241,18 +244,31 @@ const TodoEditable = props => {
       <td>
         <input
           type="text"
+          className="form-control"
           name="todo_responsible"
           value={props.todo.todo_responsible}
           onChange={props.handleDataUpadate}
         />
       </td>
       <td>
-        <input
+        <div class="form-group">
+          <select class="form-control" 
+          name="todo_priority" 
+          onChange={props.handleDataUpadate}
+          value={props.todo.todo_priority}
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        {/* <input
           type="text"
           name="todo_priority"
           value={props.todo.todo_priority}
-          onChange={props.handleDataUpadate}
-        />
+          
+        /> */}
       </td>
       <td>
         <button className="btn btn-info btn-sm" onClick={props.updateTodo}>
